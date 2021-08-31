@@ -19,8 +19,31 @@
     <title>Restuarante online</title>
 </head>
 <body>
-    <div>
-        <h1>Olá mundo</h1>
+    <div class="div-container">
+        <div class="div-form">  
+            <form action="/login" method="POST">
+                <h3>Login</h3>
+                <label>Usuário</label>
+                <input type="text" name="usuario" id="usuario">
+
+                <label>Email</label>
+                <input type="email" name="email" id="email">
+
+                <label>Senha</label>
+                <input type="password" name="pass" id="pass">
+            </form>
+            <form action="/cadastrar" method="POST">
+                <h3>Cadastrar</h3>
+                <label>Usuário</label>
+                <input type="text" name="usuario" id="usuario">
+
+                <label>Email</label>
+                <input type="email" name="email" id="email">
+
+                <label>Senha</label>
+                <input type="password" name="pass" id="pass">
+            </form>
+        </div>        
     </div>
 </body>
 </html>
