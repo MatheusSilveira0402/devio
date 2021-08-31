@@ -19,29 +19,33 @@
     <title>Restuarante online</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand icon" href="#"><h3><i class="fas fa-utensils"></i></h3></i></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            </div>
+          </div>
+        </div>
+      </nav>
     <div class="div-container">
         <div class="div-form">  
             <form action="/login" method="POST">
                 <h3>Login</h3>
-                <label>Usuário</label>
-                <input type="text" name="usuario" id="usuario">
-
-                <label>Email</label>
-                <input type="email" name="email" id="email">
-
-                <label>Senha</label>
-                <input type="password" name="pass" id="pass">
+                <input type="text" name="usuario" id="usuario" placeholder="Digite seu usuário aqui">
+                <input type="email" name="email" id="email"   placeholder="Digite seu email aqui">
+                <input type="password" name="pass" id="pass"  placeholder="Digite sua senha aqui">
             </form>
             <form action="/cadastrar" method="POST">
                 <h3>Cadastrar</h3>
-                <label>Usuário</label>
-                <input type="text" name="usuario" id="usuario">
 
-                <label>Email</label>
-                <input type="email" name="email" id="email">
-
-                <label>Senha</label>
-                <input type="password" name="pass" id="pass">
+                <input type="text" name="usuario" id="usuario" placeholder="Digite seu usuário aqui">
+                <input type="email" name="email" id="email"   placeholder="Digite seu email aqui">
+                <input type="password" name="pass" id="pass"  placeholder="Digite sua senha aqui">
+                
             </form>
         </div>        
     </div>
