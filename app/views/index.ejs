@@ -33,19 +33,21 @@
       </nav>
     <div class="div-container">
         <div class="div-form">  
-            <form action="/login" method="POST">
+            <form action="/login" method="POST" class="form-login">
                 <h3>Login</h3>
                 <input type="text" name="usuario" id="usuario" placeholder="Digite seu usuário aqui">
                 <input type="email" name="email" id="email"   placeholder="Digite seu email aqui">
                 <input type="password" name="pass" id="pass"  placeholder="Digite sua senha aqui">
+                <button type="submit" id="btn-login">Login <i class="fas fa-sign-in-alt"></i></button>
             </form>
                 <div class="vl"></div>
-            <form action="/cadastrar" method="POST">
+            <form action="/cadastrar" method="POST" class="form-cadastrar">
                 <h3>Cadastrar</h3>
 
                 <input type="text" name="usuario" id="usuario" placeholder="Digite seu usuário aqui">
                 <input type="email" name="email" id="email"   placeholder="Digite seu email aqui">
                 <input type="password" name="pass" id="pass"  placeholder="Digite sua senha aqui">
+                <button type="submit" id="btn-cadastro"><i class="fas fa-database"></i> Cadastrar</button>
                 
             </form>
             

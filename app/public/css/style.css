@@ -15,6 +15,9 @@
     border-left: 6px solid rgb(0, 0, 0);
     height: 450px;
     width: 10%;
+    position: relative;
+    left: 3%;
+    right: 10%;
 }
 
 .div-form{
@@ -38,18 +41,53 @@
     margin: 10px;
 }
 
-.div-form input{
+.form-login input{
+    color: black;
     border-radius: 2px;
     border: 2px solid;
-    border-color: rgb(92, 30, 90);
+    border-color: rgb(150, 7, 7);
 }
 
-.div-form input:focus{
-    background: rgba(117, 86, 116, 0.699);
+.form-login input:focus{
+    background: rgb(223, 79, 79);
     color: black;
 }
 
+.form-login h3{
+    color: rgb(150, 7, 7);
+}
 
-.div-form h3{
-    color: rgb(92, 30, 90);
+#btn-login{
+    color: white;
+    background: rgb(150, 7, 7);
+    border: 0ch;
+    border-top-left-radius: 15px;
+    transition: .3s ease-in;
+}
+#btn-login:hover{
+    color: white;
+    background: rgb(150, 7, 7);
+}
+
+
+.form-cadastrar input{
+    color: black;
+    border-radius: 2px;
+    border: 2px solid;
+    border-color: rgb(13, 25, 192);
+}
+
+.form-cadastrar input:focus{
+    background: rgba(5, 16, 173, 0.603);
+    color: black;
+}
+.form-cadastrar h3{
+    color: blue;
+}
+
+#btn-cadastro{
+    color: white;
+    background: rgb(13, 25, 192);
+    border: 0ch;
+    border-top-right-radius: 15px;
 }

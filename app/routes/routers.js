@@ -15,7 +15,7 @@ module.exports = function(application){
 
     //routa para pagina home onde terar o catalgo com todos os produtos e para cadastrar o produto;
     application.get('/home', function(req, res){
-        application.app.controllers.produtos.gethome(application, req, res)
+        application.app.controllers.produtos.getHome(application, req, res)
     })
     
     application.post('/produtos', function(req, res){
