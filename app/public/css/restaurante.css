@@ -8,3 +8,25 @@
     height: 100vh;
     background: rgba(228, 0, 0, 0.603);
 }
+.div-card{
+    background: black;
+    width: 70%;
+    height: 100%;
+    float: right;
+    display: flex;
+    padding: 10px;
+}
+
+.card{
+    position: relative;
+    left: 15%;
+    margin: 15px;    
+}
+
+.div-anucio{
+    background: rgb(43, 1, 82);
+    width: 30%;
+    height: 100%;
+    float: left;
+
+}
