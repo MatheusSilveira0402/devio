@@ -7,12 +7,11 @@ PedidosDAO.prototype.getCards = function(dadoForm, res){
         mongoclient.collection("pedidos", function(err, collection){
         
             collection.find().toArray(function(err, result){
-                if(result){
-                res.render("restaurante", {dadoCard: result})
-
-                }else {
-                    res.render("restaurante", {dadoCard: {}});
-                }
+                const dados = result;
+                console.log(dados)
+                if(dados){
+                res.render("restaurante", { dadoCard : dados})
+                } 
             });
         });
     });

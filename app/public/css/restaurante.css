@@ -1,6 +1,8 @@
 *{
     margin: 0px;
     padding: 0px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 16px;
 }
 
 .div-container{
@@ -9,8 +11,8 @@
     background: rgba(228, 0, 0, 0.603);
 }
 .div-card{
-    background: black;
-    width: 70%;
+    background: rgba(238, 195, 145, 0.199);
+    width: 50%;
     height: 100%;
     float: right;
     display: flex;
@@ -19,13 +21,93 @@
 }
 
 .card{
-    margin: 15px;    
+    margin: 10px;
+    align-items: center; 
+    position: relative;
+    left: 20%;       
+}
+.card button, input{
+    width: 100%;
+    height: 25px;
 }
 
-.div-anucio{
-    background: rgb(43, 1, 82);
-    width: 30%;
+.card button{
+    background: rgb(153, 39, 39);
+    border: 0ch;
+    border-top-left-radius: 10px;
+    margin-top: 2px;
+}
+
+.card input{
+    -webkit-appearance: none;
+    border: 0ch;
+    border-bottom:solid 2px rgba(0, 0, 253, 0.562);
+    text-align: center;
+}
+.card input:focus{
+    background: rgb(152, 152, 240);
+}
+
+.div-monte{
+    background: rgb(156, 68, 75);
+    width: 50%;
     height: 100%;
     float: left;
+    text-align: center;
+    justify-content: center ;
+}
 
+.div-form input, button{
+    width: 85%;
+    height: 30px;
+    border:0ch;
+    margin-top: 4px;
+    border-radius: 10px;
+    
+}
+
+.div-form button {
+    background: rgb(179, 43, 43);
+}
+.div-card-monte{
+    position: relative;
+    top: 10%;
+}
+.line{
+    background: black;
+    box-sizing:border-box;
+    width:100%;  
+    height: 10px;
+    position: relative;
+    top: 5%;
+}
+
+.card-monte{
+    margin: 10px;
+    align-items: center; 
+    position: relative;
+    left: 20%;  
+    background: white;
+    border-radius: 4px;     
+}
+.card-monte button, input{
+    width: 100%;
+    height: 25px;
+}
+
+.card-monte button{
+    background: rgb(153, 39, 39);
+    border: 0ch;
+    border-top-left-radius: 10px;
+    margin-top: 2px;
+}
+
+.card-monte input{
+    -webkit-appearance: none;
+    border: 0ch;
+    border-bottom:solid 2px rgba(0, 0, 253, 0.562);
+    text-align: center;
+}
+.card-monte input:focus{
+    background: rgb(152, 152, 240);
 }
