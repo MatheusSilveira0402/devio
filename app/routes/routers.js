@@ -15,11 +15,11 @@ module.exports = function(application){
 
     //routa para pagina home onde terar o catalgo com todos os produtos e para cadastrar o produto;
     application.get('/home', function(req, res){
-        application.app.controllers.produtos.getHome(application, req, res)
+        application.app.controllers.pedidos.getHome(application, req, res)
     })
     
     application.post('/pedidos', function(req, res){
-        application.app.controllers.produtos.cadastrarPedidos(application, req, res)
+        application.app.controllers.pedidos.cadastrarPedidos(application, req, res)
     });
 
 

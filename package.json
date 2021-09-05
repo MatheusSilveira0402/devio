@@ -16,7 +16,7 @@
     "express": "^4.14.0",
     "express-session": "^1.14.1",
     "express-validator": "^2.20.8",
-    "mongodb": "^2.2.29",
+    "mongodb": "^2.2.9",
     "mongoose": "^5.12.5",
     "socket.io": "^2.0.3",
     "webpack": "^3.1.0"
