@@ -3,18 +3,20 @@ function PedidosDAO(connection){
 }
 
 PedidosDAO.prototype.getCards = function(dadoForm, res){
-    const sql = "SELECT * FROM pedidos";
-    this._connection.query(sql, function(err, results){
-        results.forEach( row => {
-            this._cards = [row]
-        });
+    this._connection.open( function(err, mongoclient){
+        mongoclient.collection("pedidos", function(err, collection){
+        
+            collection.find().toArray(function(err, result){
+                if(result){
+                res.render("restaurante", {dadoCard: result})
 
-        if(this._cards){
-            res.send(this._cards)
-        } else {
-            res.send("não deu");
-        }
-    })
+                }else {
+                    res.render("restaurante", {dadoCard: {}});
+                }
+            });
+        });
+    });
+    
 }
 
 

@@ -1,19 +1,23 @@
-var mysql = require('mysql');
 
-const conn = function connect(){
-    
-    const connection = mysql.createConnection({
-      host: "localhost",
-      user: "devio",
-      password: "892365",
-      database: "restaurante"
-    });
+var mongo = require('mongodb');
+
+var connMongoDB = function(){
 	
-    return connection;
+	var db = new mongo.Db(
+	 	'restaurante',
+	 	new mongo.Server(
+	 		'localhost',
+	 		27017,
+	 		{} 		
+	 		),
+	 	{}
+	 );
+
+
+	 return db;
 
 }
 
-
 module.exports = function(){
-	return conn;
+	return connMongoDB;
 }
