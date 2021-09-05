@@ -3,6 +3,6 @@ module.exports.getHome = function(application, req, res){
 }
 
 
-module.exports.cadastrarProdutos = function(application, req, res){
-    res.send("cadastrar produtos")
+module.exports.cadastrarPedidos = function(application, req, res){
+    res.send("cadastrar pedidos")
 }

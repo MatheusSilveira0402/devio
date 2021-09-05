@@ -18,8 +18,8 @@ module.exports = function(application){
         application.app.controllers.produtos.getHome(application, req, res)
     })
     
-    application.post('/produtos', function(req, res){
-        application.app.controllers.produtos.cadastrarProdutos(application, req, res)
+    application.post('/pedidos', function(req, res){
+        application.app.controllers.produtos.cadastrarPedidos(application, req, res)
     });
 
 
