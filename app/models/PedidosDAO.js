@@ -8,18 +8,23 @@ PedidosDAO.prototype.getCards = function(dadoForm, res){
         
             collection.find().toArray(function(err, result){
                 this._dados = result;
+                
             });
         });
         mongoclient.collection("montepedidos", function(err, collection){
-        
-            collection.find().toArray(function(err, result){
+            var date = new Date();
+            var momento_atual = date.getTime();
+            console.log(momento_atual)
+            collection.find({terminaem:{$gt:momento_atual}}).toArray(function(err, result){
                 this._dadosMonte = result;
+                console.log(this._dadosMonte);
                 
-                if(this._dados){
+                if(this._dadosMonte){
                     res.render("restaurante", { dadoCard : this._dados, dadoCardMonte : this._dadosMonte, validacao : {}, pedido: {}})
                 }
 
             });
+            
         }); 
     });
 }
@@ -31,29 +36,18 @@ PedidosDAO.prototype.cadastroPedidos = function(dadosform, res, req){
             req.assert('acompanhamento','Acompanhamento é campo obrigatório').notEmpty();
             req.assert('fritas','fritas é campo obrigatório').notEmpty();
 
+            var date = new Date();
+            dadosform.terminaem = date.getTime() + 1 * 6 * 6000;
+
+            console.log(dadosform.terminaem)
             var erros = req.validationErrors();
 
             if(erros){
                 res.render("restaurante", {validacao : erros, dadoCard : this._dados, dadoCardMonte : this._dadosMonte, pedido : {}})
                 return;
             } else {
-                console.log(dadosform)
                 collection.insert(dadosform);
-                res.redirect("home");
-                for(var i=0; i < 3; i++){
-                    console.log(i)
-                    if(i == 3){
-                        collection.drop(function(err, result){
-                            if(result){
-                                console.log("deu")
-                            }else{
-                                console.log("não deu")
-                            }
-                        });
-                        const principal = "pedido feito retirar no restaurante"
-                        collection.insert(principal);
-                    }
-                }
+                res.redirect("/home")
             }
             
             

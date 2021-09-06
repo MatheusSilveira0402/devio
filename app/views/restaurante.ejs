@@ -21,9 +21,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <title>Restaurante online</title>
+    <script>
+      $('#btn-pedir').click(function(){
+        conometro();  
+      });
+
+      var timerId = null;
+        
+        function conometro(){
+          $('.temp').each(function(){
+            var segundos = $(this).html();
+            alert(segundos)
+            var segundos_atuais = parseInt(segundos) -1;
+
+            $(this).html(segundos_atuais);
+
+
+           timerId = setTimeout('conometro()', 1000);
+          });
+        }
+    </script>
 </head>
 <body>
-  <!-- Link moment -->
   
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -73,8 +92,7 @@
       <div class="div-card" id="divCard">
         
       </div>
-     <!-- contem todo form com o resultado na mesma div-->
-     <script src="https://momentjs.com/downloads/moment.min.js"></script>   
+     <!-- contem todo form com o resultado na mesma div-->  
      <div class="div-monte">
         <h3>monte seu pedido</h3>
         <div class="div-form">
@@ -82,7 +100,7 @@
             <input type="text"  name="principal" placeholder="Principal: Arroz, feijão e macarrão">
             <input type="text"  name="acompanhamento" placeholder="Acompanhamento: Carnes, legumes ou frutas">
             <input type="text"  name="fritas" placeholder="fritas: batata, madioca entre outros ">
-            <button type="submit">Pedir</button>
+            <button type="submit" id="btn-pedir">Pedir</button>
           </form>
         </div>
         <div class="line"></div>
@@ -125,6 +143,7 @@
                   <p class="card-title"><%=dadoCardMonte[i].principal%></p>
                   <p class="card-text"><%=dadoCardMonte[i].acompanhamento%></p>
                   <p class="card-text"><%=dadoCardMonte[i].fritas%></p>
+                  <p class="card-text"><span class="temp"><%=dadoCardMonte[i].terminaem%></span></p>
                 </div>  
             </div>
           <br>
@@ -134,6 +153,5 @@
     document.getElementById("divCard").appendChild(cont)
     document.getElementById("divCardMonte").appendChild(cont1)
   }
-
 </script>
 </html>

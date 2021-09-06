@@ -22,9 +22,7 @@ UsuarioDAO.prototype.autenticar = function(dadosform, res, req){
                         res.render("index", {validacao : erros})
                         return;
                     }
-                    console.log(result);
                 } else{
-                    console.log(result);
                     res.redirect("/home");
                 }
             })
