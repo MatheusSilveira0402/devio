@@ -1,10 +1,11 @@
 const crypto = require("crypto");
+const { login } = require("../controllers");
 
 function UsuarioDAO(connection){
     this._connection = connection();
 }
 
-UsuarioDAO.prototype.autenticar = function(dadosform, res){
+UsuarioDAO.prototype.autenticar = function(dadosform, res, req){
     this._connection.open( function(err, mongoclient){
         mongoclient.collection("usuario", function(err, collection){
             const email = dadosform.email;
@@ -13,8 +14,14 @@ UsuarioDAO.prototype.autenticar = function(dadosform, res){
             dadosform.pass =  senha_criptografada;
 
             collection.find({email:{$eq:email}, pass:{$eq:dadosform.pass}}).toArray( function(err, result){
-                if(result === 0){
-                    res.send("não deu")
+                if(result == 0){
+                    req.assert('login','Login está incorreto').notEmpty();
+                    var erros = req.validationErrors();
+                
+                    if(erros){
+                        res.render("index", {validacao : erros})
+                        return;
+                    }
                     console.log(result);
                 } else{
                     console.log(result);

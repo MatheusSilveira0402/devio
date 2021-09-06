@@ -18,13 +18,21 @@
     display: flex;
     padding: 10px;
     max-width: 1300px;
+    
 }
 
+.div-card h3 {
+    text-align: center;
+    position: relative;
+    left: 20%;
+
+}
 .card{
     margin: 10px;
     align-items: center; 
     position: relative;
-    left: 20%;       
+    left: 20%; 
+    text-align: center;      
 }
 .card button, input{
     width: 100%;

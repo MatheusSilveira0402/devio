@@ -23,6 +23,8 @@
     <title>Restaurante online</title>
 </head>
 <body>
+  <!-- Link moment -->
+  
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand icon" href="#"><h3><i class="fas fa-utensils"></i></h3></i></a>
@@ -50,17 +52,35 @@
                 </div>
             </div>
         <% } %>
+        <% if(pedido.length > 0) {%>
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="alert alert-danger">
+                      <strong>Atenção!</strong>
+                      <ul>
+                          <% for(var i = 0; i < pedido.length; i++) { %>
+                              <li><%=pedido[i].msg%></li>
+                          <% } %>
+                      </ul>   
+                  </div>
+              </div>
+          </div>
+      <% } %>
     </div>
+    
     <div class="div-container">
       <!-- aqui tem card dinamico-->
-      <div class="div-card" id="divCard"></div>
+      <div class="div-card" id="divCard">
+        
+      </div>
      <!-- contem todo form com o resultado na mesma div-->
-      <div class="div-monte">
+     <script src="https://momentjs.com/downloads/moment.min.js"></script>   
+     <div class="div-monte">
         <h3>monte seu pedido</h3>
         <div class="div-form">
           <form action="/pedidos" method="POST">
-            <input type="text"  name="principal" placeholder="Arroz, feijão e macarrão">
-            <input type="text"  name="acompanhamento" placeholder="Carnes, legumes ou frutas">
+            <input type="text"  name="principal" placeholder="Principal: Arroz, feijão e macarrão">
+            <input type="text"  name="acompanhamento" placeholder="Acompanhamento: Carnes, legumes ou frutas">
             <input type="text"  name="fritas" placeholder="fritas: batata, madioca entre outros ">
             <button type="submit">Pedir</button>
           </form>
@@ -72,6 +92,7 @@
     </div>
 </body>
 
+
 <script>
 
   for(var i=0; i < 1; i++){
@@ -79,25 +100,24 @@
     const cont1 = document.createElement("div");
 
     cont.innerHTML = `
-    <% for(var i=0; i < dadoCard.length; i++) {%>
-      <div class="card" id="card" style="width: 30rem;">
-          <i class="fas fa-hamburger fa-3x"></i>
-          <div class="card-body">
-            <h5 class="card-title"><%=dadoCard[i].titulo%></h5>
-            <p class="card-text"><%=dadoCard[i].descricao%></p>
-            <form action="/pedir" method="POST">
-              <input type="text" placeholder="OBSERVAÇÕES">
-              <button>Pedir</button>
-            </form>
-          </div>  
-        </div>
-      <br>
-     <%}%> 
+    <% if(dadoCard.length > 0) {%>
+      <h3>Ultimos pedidos</h3>
+      <% for(var i=0; i < dadoCard.length; i++) {%>
+        <div class="card" id="card" style="width: 30rem;">
+            <i class="fas fa-hamburger fa-3x"></i>
+            <div class="card-body">
+              <p class="card-title" name="principal"><%=dadoCard[i].principal%></p>
+              <p class="card-text" name="acompanhamento"><%=dadoCard[i].acompanhamneto%></p>
+              <p class="card-text" name="fritas" ><%=dadoCard[i].fritas%></p>
+            </div>  
+          </div>
+      <%}%> 
+    <%}%>   
     `
 
 
-    cont1.innerHTML = `
-     
+    cont1.innerHTML = ` 
+       <%if(dadoCardMonte.length > 0) {%> 
         <% for(var i=0; i < dadoCardMonte.length; i++) {%>
           <div class="card-monte" id="card" style="width: 30rem;">
                 <i class="fas fa-hamburger fa-3x"></i>
@@ -105,16 +125,12 @@
                   <p class="card-title"><%=dadoCardMonte[i].principal%></p>
                   <p class="card-text"><%=dadoCardMonte[i].acompanhamento%></p>
                   <p class="card-text"><%=dadoCardMonte[i].fritas%></p>
-                  <form action="/pedir" method="POST">
-                    <input type="text" placeholder="OBSERVAÇÕES">
-                    <button>Pedir</button>
-                  </form>
                 </div>  
             </div>
           <br>
         <%}%> 
-    `
-  
+      <%}%>  
+        `
     document.getElementById("divCard").appendChild(cont)
     document.getElementById("divCardMonte").appendChild(cont1)
   }

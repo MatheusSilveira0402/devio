@@ -21,5 +21,6 @@ module.exports.cadastrarPedidos = function(application, req, res){
     var PedidosDAO = new application.app.models.PedidosDAO(connection);
 
     PedidosDAO.cadastroPedidos(dadoForm, res, req);
-    
+
 }
+
