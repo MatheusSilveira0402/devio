@@ -37,7 +37,7 @@ PedidosDAO.prototype.cadastroPedidos = function(dadosform, res, req){
             req.assert('fritas','fritas é campo obrigatório').notEmpty();
 
             var date = new Date();
-            dadosform.terminaem = date.getTime() + 1 * 6 * 6000;
+            dadosform.terminaem = date.getTime() + 1 * 10 * 6000;
 
             console.log(dadosform.terminaem)
             var erros = req.validationErrors();

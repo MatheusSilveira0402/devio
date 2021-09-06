@@ -20,8 +20,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    
     <title>Restaurante online</title>
     <script>
+      $.get('/api/divCardMonte', function(data) {
+        $('#divCardMonte').html(data);
+      });
+
       $('#btn-pedir').click(function(){
         conometro();  
       });
@@ -31,14 +37,16 @@
         function conometro(){
           $('.temp').each(function(){
             var segundos = $(this).html();
-            alert(segundos)
-            var segundos_atuais = parseInt(segundos) -1;
-
-            $(this).html(segundos_atuais);
-
-
-           timerId = setTimeout('conometro()', 1000);
+				    var segundos_atuais = parseInt(segundos) - 1;
+            
+              if(segundos_atuais < 0){
+                console.log("deu")
+              } else {
+                $(this).html(segundos_atuais);
+               
+              }
           });
+          timerId = setTimeout('cronometro()', 1000);
         }
     </script>
 </head>
@@ -111,11 +119,13 @@
 </body>
 
 
-<script>
-
+<script> 
+  
   for(var i=0; i < 1; i++){
     const cont = document.createElement("div");
     const cont1 = document.createElement("div");
+
+  
 
     cont.innerHTML = `
     <% if(dadoCard.length > 0) {%>
@@ -131,27 +141,35 @@
           </div>
       <%}%> 
     <%}%>   
-    `
+    `;
 
 
     cont1.innerHTML = ` 
        <%if(dadoCardMonte.length > 0) {%> 
         <% for(var i=0; i < dadoCardMonte.length; i++) {%>
+          <%
+              var date = new Date()
+              var momento_atual = date.getTime()
+
+              var segundos_restantes = Math.round((dadoCardMonte[i].terminaem - momento_atual) / 1000)
+            %>
           <div class="card-monte" id="card" style="width: 30rem;">
                 <i class="fas fa-hamburger fa-3x"></i>
                 <div class="card-body">
                   <p class="card-title"><%=dadoCardMonte[i].principal%></p>
                   <p class="card-text"><%=dadoCardMonte[i].acompanhamento%></p>
                   <p class="card-text"><%=dadoCardMonte[i].fritas%></p>
-                  <p class="card-text"><span class="temp"><%=dadoCardMonte[i].terminaem%></span></p>
+                  <p class="card-text"><span class="temp"><i class="fas fa-clock"></i> <%=segundos_restantes%></span></p>
                 </div>  
             </div>
           <br>
         <%}%> 
       <%}%>  
-        `
-    document.getElementById("divCard").appendChild(cont)
-    document.getElementById("divCardMonte").appendChild(cont1)
+        `;
+    document.getElementById("divCard").appendChild(cont);
+    document.getElementById("divCardMonte").appendChild(cont1);
   }
+
+  
 </script>
 </html>
