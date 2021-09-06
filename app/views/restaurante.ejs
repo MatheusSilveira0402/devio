@@ -21,16 +21,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
-    
+    <meta http-equiv="refresh" content="5; URL=/home">
     <title>Restaurante online</title>
     <script>
-      $.get('/api/divCardMonte', function(data) {
+      $.get('#divCardMonte', function(data) {
         $('#divCardMonte').html(data);
       });
 
       $('#btn-pedir').click(function(){
-        conometro();  
+        conometro(); 
+        
+        
       });
+
+      
 
       var timerId = null;
         
@@ -38,7 +42,7 @@
           $('.temp').each(function(){
             var segundos = $(this).html();
 				    var segundos_atuais = parseInt(segundos) - 1;
-            
+              cont(segundos);
               if(segundos_atuais < 0){
                 console.log("deu")
               } else {
@@ -48,6 +52,11 @@
           });
           timerId = setTimeout('cronometro()', 1000);
         }
+
+        function cont(segundos){  
+
+        document.getElementById("cardTemp").appendChild(segundos); 
+      }
     </script>
 </head>
 <body>
@@ -153,13 +162,13 @@
 
               var segundos_restantes = Math.round((dadoCardMonte[i].terminaem - momento_atual) / 1000)
             %>
-          <div class="card-monte" id="card" style="width: 30rem;">
+          <div class="card-monte"  style="width: 30rem;">
                 <i class="fas fa-hamburger fa-3x"></i>
-                <div class="card-body">
+                <div class="card-body" id="cardText">
                   <p class="card-title"><%=dadoCardMonte[i].principal%></p>
                   <p class="card-text"><%=dadoCardMonte[i].acompanhamento%></p>
                   <p class="card-text"><%=dadoCardMonte[i].fritas%></p>
-                  <p class="card-text"><span class="temp"><i class="fas fa-clock"></i> <%=segundos_restantes%></span></p>
+                  <p class="card-text"><span class="temp" id="cardTemp"><i class="fas fa-clock"></i> <%=segundos_restantes%></span></p>
                 </div>  
             </div>
           <br>
@@ -168,6 +177,7 @@
         `;
     document.getElementById("divCard").appendChild(cont);
     document.getElementById("divCardMonte").appendChild(cont1);
+   
   }
 
   
